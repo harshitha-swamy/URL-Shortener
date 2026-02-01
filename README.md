@@ -122,11 +122,11 @@ php artisan serve
 </p>
 
 <p align="center">
-  <img src="https://placebear.com/800/450" alt="URL List – Member Perspective" width="48%">
+  <img src="https://github.com/harshitha-swamy/URL-Shortener/blob/main/public/images/invite.png" alt="URL List – Member Perspective" width="48%">
   <img src="https://github.com/harshitha-swamy/URL-Shortener/blob/main/public/images/url_creation.png" alt="Access Denied (403)" width="48%">
 </p>
 
-> Placeholder images — real application screenshots will be added soon.
+
 
 ---
 
