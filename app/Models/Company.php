@@ -11,15 +11,22 @@ class Company extends Model
 
     protected $fillable = ['name'];
 
-    // Users in this company
     public function users()
     {
         return $this->hasMany(User::class);
     }
 
-    // URLs created by this company's users
-    public function urls()
+   
+
+    public function shortUrls()
     {
-        return $this->hasManyThrough(ShortUrl::class, User::class);
+        return $this->hasManyThrough(
+            ShortUrl::class,
+            User::class,
+            'company_id', // FK on users table
+            'user_id',    // FK on short_urls table
+            'id',         // PK on companies
+            'id'          // PK on users
+        );
     }
 }

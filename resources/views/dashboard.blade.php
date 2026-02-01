@@ -1,52 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Super Admin Dashboard - Sembark URL Shortner</title>
+    <title>Dashboard - Sembark URL Shortener</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
+        /* body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            padding: 20px;
+            background-color: #f8f9fa; 
+            margin: 0;
+            padding: 0;
+        } */
+
+        body {
+            background: linear-gradient(135deg, #4da6ff, #28a745);
+            min-height: 100vh;
         }
 
         .dashboard-container {
             background-color: #fff;
-            padding: 40px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            max-width: 1036px;
-            margin: auto;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        h2 {
-            color: orange;
-            margin-top: 0;
-            border-bottom: 2px solid orange;
+        /* Header with logout aligned properly */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ff7f0e;
             padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-header h2 {
+            color: #ff7f0e;
+            margin: 0;
+            font-size: 24px;
         }
 
         #logoutBtn {
-            float: right;
+            background-color: #dc3545;
+            color: white;
+            padding: 6px 14px;
+            border: none;
+            border-radius: 4px;
             cursor: pointer;
         }
 
+        #logoutBtn:hover {
+            background-color: #c82333;
+        }
+
+        /* Button group */
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        button#shortUrlBtn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button#inviteBtn {
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
-            table-layout: fixed; /* important for wrapping/truncation */
+            table-layout: auto;
+            margin-bottom: 30px;
         }
 
         th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            overflow-wrap: break-word; /* wrap long URLs */
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            word-break: break-word;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e9ecef;
         }
 
         td a {
-            display: inline-block;
-            max-width: 100%;       /* ensures wrapping inside cell */
-            word-break: break-word; /* break very long URLs */
-            color: #007bff;
+            color: #0d6efd;
             text-decoration: none;
         }
 
@@ -54,346 +112,146 @@
             text-decoration: underline;
         }
 
+        h3 {
+            margin-bottom: 10px;
+            color: #343a40;
+        }
+
         .urls-container {
-            overflow-x: auto; /* scroll if table too wide */
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
-        button {
-            padding: 6px 12px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        #shortUrlBtn {
-            background-color: #28a745;
-            color: white;
-        }
-
-        #inviteBtn {
-            background-color: #4da6ff;
-            color: white;
-        }
     </style>
 </head>
 <body>
 
 <div class="dashboard-container">
-    <h2 id="dashboardHeading" style="color:orange; margin-top:0; border-bottom:2px solid orange; padding-bottom:10px;">
-    &gt;URL&lt; Dashboard
-    <span id="logoutBtn" style="float:right; cursor:pointer;">Logout &rarr;</span>
-</h2>
-
-    <div style="margin-top:20px; display:flex; justify-content:space-between; align-items:center;">
-        <h3>Clients</h3>
-        <div>
-            <button id="shortUrlBtn">Create Short URL</button>
-            <button id="inviteBtn">Invite</button>
-        </div>
+    <div class="dashboard-header">
+        <h2 id="dashboardTitle">Dashboard</h2>
+        <button id="logoutBtn">Logout &rarr;</button>
     </div>
 
-    <table>
-        <thead>
-            <tr style="background-color:#eee;">
-                <th>Client Name</th>
-                <th>Users</th>
-                <th>Total Generated URLs</th>
-                <th>Total URL Hits</th>
-            </tr>
-        </thead>
-        <tbody id="clientsTableBody">
-            <!-- JS will fill this -->
-        </tbody>
-    </table>
+    <div class="button-group">
+        <button id="shortUrlBtn">Create Short URL</button>
+        <button id="inviteBtn">Invite</button>
+    </div>
 
-    <h3 class="url_list" style="margin-top:30px;">URLs Created</h3>
-    <div class="urls-container">
+    <div id="companyTable">
+        <h3>Clients</h3>
         <table>
             <thead>
-                <tr style="background-color:#eee;">
-                    <th>Original URL</th>
-                    <th>Short URL</th>
-                    <th>Created By</th>
-                    <th>Created At</th>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Users</th>
+                    <th>Total Generated URLs</th>
+                    
                 </tr>
             </thead>
-            <tbody id="urlsTableBody">
-                <!-- JS will fill this -->
+            <tbody id="clientsTableBody">
+                <!-- JS fills this -->
             </tbody>
         </table>
     </div>
 
-    <div style="margin-top:10px; text-align:right;">
-        <a href="#" id="viewAllLink">View All</a>
+    <div id="url_list" class="urls-container">
+        <h3>URLs Created</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Original URL</th>
+                    <th>Short URL</th>
+                    <th>Created By</th>
+                    <th>Created At</th>
+                    <th>Total Hits</th>
+                </tr>
+            </thead>
+            <tbody id="urlsTableBody">
+                <!-- JS fills this -->
+            </tbody>
+        </table>
     </div>
 </div>
 
-
-
 <script>
 const token = localStorage.getItem('api_token');
 if (!token) window.location.href = '/login';
 
-async function loadDashboard() {
-    const res = await fetch('/api/me', {
-        headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/json' }
-    });
-
-    const user = await res.json();
-
-    // Change the <h2> heading based on role
-    const dashboardHeading = document.getElementById('dashboardHeading');
-    let roleTitle = '';
-    switch(user.role) {
-        case 'super_admin':
-            roleTitle = 'Super Admin Dashboard';
-            break;
-        case 'admin':
-            roleTitle = 'Admin Dashboard';
-            break;
-        case 'member':
-            roleTitle = 'Member Dashboard';
-            break;
-        default:
-            roleTitle = 'Dashboard';
-    }
-    dashboardHeading.innerHTML = `&gt;URL&lt; ${roleTitle} <span id="logoutBtn" style="float:right; cursor:pointer;">Logout &rarr;</span>`;
-}
-
-// Run dashboard
-loadDashboard();
-</script>
-
-    {{-- <script>
-        const token = localStorage.getItem('api_token');
-        if (!token) window.location.href = '/login';
-
-        const logoutBtn = document.getElementById('logoutBtn');
-        logoutBtn.addEventListener('click', async () => {
-            await fetch('/api/logout', {
-                method: 'POST',
-                headers: { 'Authorization': 'Bearer ' + token, 'Accept':'application/json' }
-            });
-            localStorage.removeItem('api_token');
-            window.location.href = '/login';
-        });
-
-        const clientsTableBody = document.getElementById('clientsTableBody');
-
-        async function fetchClients() {
-            // Example API: GET /api/clients (your backend should return clients with users count, total URLs, hits)
-            const res = await fetch('/api/clients', {
-                headers: { 'Authorization': 'Bearer ' + token, 'Accept':'application/json' }
-            });
-            const data = await res.json();
-
-            clientsTableBody.innerHTML = '';
-
-            data.forEach(client => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td style="border:1px solid #ccc; padding:8px;">${client.name} (${client.email})</td>
-                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">${client.users_count}</td>
-                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">${client.total_urls}</td>
-                    <td style="border:1px solid #ccc; padding:8px; text-align:center;">${client.total_hits}</td>
-                `;
-                clientsTableBody.appendChild(tr);
-            });
-        }
-
-        fetchClients();
-
-        // document.getElementById('inviteBtn').addEventListener('click', () => {
-        //     alert('Invite Admin functionality (you can implement modal or redirect to invite page)');
-        // });
-
-        document.getElementById('viewAllLink').addEventListener('click', () => {
-            alert('Pagination / View All functionality (implement as needed)');
-        });
-    </script>
-
-    
-
-<script>
-document.getElementById('inviteBtn').addEventListener('click', () => {
-    window.location.href = '/invite';
-});
-</script>
-
-
-
-<script>
-const token = localStorage.getItem('api_token');
-console.log("Token in dashboard:", token);
-if (!token) window.location.href = '/login';
-
-async function loadDashboard() {
-    const res = await fetch('/api/me', {
-        headers: {
-            'Authorization': 'Bearer ' + token,
-            'Accept': 'application/json'
-        }
-    });
-
-    const user = await res.json();
-
-console.log("User data:", user);
-    const inviteBtn   = document.getElementById('inviteBtn');
-    const shortUrlBtn = document.getElementById('shortUrlBtn');
-
-    // hide both first
-    inviteBtn.style.display = 'none';
-    shortUrlBtn.style.display = 'none';
-    alert(user.role);
-
-    if (user.role === 'super_admin') {
-        inviteBtn.style.display = 'inline-block';
-    }
-
-    if (user.role === 'admin' || user.role === 'member') {
-        shortUrlBtn.style.display = 'inline-block';
-    }
-}
-
-loadDashboard();
-</script>
-
-
-<script>
-document.getElementById('inviteBtn').onclick = () => {
-    window.location.href = '/invite';
-};
-
-document.getElementById('shortUrlBtn').onclick = () => {
-    window.location.href = '/short-urls';
-};
-</script> --}}
-
-
-<script>
-// const token = localStorage.getItem('api_token');
-if (!token) window.location.href = '/login';
-
+const dashboardTitle = document.getElementById('dashboardTitle');
 const logoutBtn = document.getElementById('logoutBtn');
-const clientsTableBody = document.getElementById('clientsTableBody');
 const inviteBtn = document.getElementById('inviteBtn');
 const shortUrlBtn = document.getElementById('shortUrlBtn');
+const urllist = document.getElementById('url_list');
+const clientsTableBody = document.getElementById('clientsTableBody');
+const urlsTableBody = document.getElementById('urlsTableBody');
+const companyTable = document.getElementById('companyTable');
 
 logoutBtn.addEventListener('click', async () => {
     await fetch('/api/logout', {
         method: 'POST',
-        headers: { 'Authorization': 'Bearer ' + token, 'Accept':'application/json' }
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Accept': 'application/json'
+        }
     });
     localStorage.removeItem('api_token');
     window.location.href = '/login';
 });
 
-document.getElementById('viewAllLink').addEventListener('click', () => {
-    alert('Pagination / View All functionality (implement as needed)');
-});
-
-document.getElementById('inviteBtn').addEventListener('click', () => {
-    window.location.href = '/invite';
-});
-
-document.getElementById('shortUrlBtn').addEventListener('click', () => {
-    window.location.href = '/short-urls';
-});
-
 async function loadDashboard() {
     const res = await fetch('/api/me', {
-        headers: {
-            'Authorization': 'Bearer ' + token,
-            'Accept': 'application/json'
-        }
+        headers: {'Authorization': 'Bearer ' + token, 'Accept': 'application/json'}
     });
-
+    if (!res.ok) return window.location.href = '/login';
     const user = await res.json();
 
-    console.log("User data:", user);
+    dashboardTitle.innerText = user.role === 'super_admin' ? 'Super Admin Dashboard' :
+                               user.role === 'admin' ? 'Admin Dashboard' :
+                               user.role === 'member' ? 'Member Dashboard' : 'Dashboard';
 
-    // hide both first
-    inviteBtn.style.display = 'none';
-    shortUrlBtn.style.display = 'none';
-
-    if (user.role === 'super_admin' || user.role === 'admin') {
-        inviteBtn.style.display = 'inline-block';
-    }
-
-    if (user.role === 'admin' || user.role === 'member') {
-        shortUrlBtn.style.display = 'inline-block';
-    }
-    if(user.role === 'super_admin'){
-        $('.url_list').hide();
-    }
+    inviteBtn.style.display = (user.role === 'super_admin' || user.role === 'admin') ? 'inline-block' : 'none';
+    shortUrlBtn.style.display = (user.role === 'admin' || user.role === 'member') ? 'inline-block' : 'none';
+    companyTable.style.display = (user.role === 'member') ? 'none' : 'block';
+    urllist.style.display = (user.role === 'super_admin') ? 'none' : 'block';
 }
 
-// Fetch clients and populate table
 async function fetchClients() {
-    const res = await fetch('/api/clients', {
-        headers: { 'Authorization': 'Bearer ' + token, 'Accept':'application/json' }
-    });
+    const res = await fetch('/api/clients', { headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/json' }});
+    if (!res.ok) return;
     const data = await res.json();
     clientsTableBody.innerHTML = '';
-    data.forEach(client => {
+    data.forEach(c => {
         const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td style="border:1px solid #ccc; padding:8px;">${client.name} (${client.email})</td>
-            <td style="border:1px solid #ccc; padding:8px; text-align:center;">${client.users_count}</td>
-            <td style="border:1px solid #ccc; padding:8px; text-align:center;">${client.total_urls}</td>
-            <td style="border:1px solid #ccc; padding:8px; text-align:center;">${client.total_hits}</td>
-        `;
+        tr.innerHTML = `<td>${c.name} (${c.email})</td><td style="text-align:center;">${c.users_count}</td><td style="text-align:center;">${c.total_urls}</td>`;
         clientsTableBody.appendChild(tr);
     });
 }
 
-const urlsTableBody = document.getElementById('urlsTableBody');
-
 async function fetchUrls() {
-    const res = await fetch('/api/urls', {
-        headers: { 
-            'Authorization': 'Bearer ' + token,
-            'Accept':'application/json'
-        }
-    });
-    
-    if (!res.ok) {
-        console.error("Failed to fetch URLs");
-        return;
-    }
-
+    const res = await fetch('/api/urls', { headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/json' }});
+    if (!res.ok) return;
     const data = await res.json();
     urlsTableBody.innerHTML = '';
-
-    data.forEach(url => {
+    data.forEach(u => {
+        console.log("url:", u);
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td style="border:1px solid #ccc; padding:8px;">
-                <a href="${url.original_url}" target="_blank">${url.original_url}</a>
-            </td>
-            <td style="border:1px solid #ccc; padding:8px;">
-                <a href="/s/${url.short_code}" target="_blank">${window.location.origin}/s/${url.short_code}</a>
-            </td>
-            <td style="border:1px solid #ccc; padding:8px; text-align:center;">
-                ${url.user ? url.user.name : '-'}
-            </td>
-            <td style="border:1px solid #ccc; padding:8px; text-align:center;">
-                ${new Date(url.created_at).toLocaleString()}
-            </td>
+            <td><a href="${u.original_url}" target="_blank">${u.original_url}</a></td>
+            <td><a href="/short/${u.short_code}" target="_blank">${window.location.origin}/short/${u.short_code}</a></td>
+            <td style="text-align:center;">${u.user_name ? u.user_name : '-'}</td>
+            <td style="text-align:center;">${new Date(u.created_at).toLocaleString()}</td>
+            <td style="text-align:center;">${u.clicks}</td>
         `;
         urlsTableBody.appendChild(tr);
     });
 }
 
-// Run everything
+inviteBtn.addEventListener('click', () => window.location.href = '/invite');
+shortUrlBtn.addEventListener('click', () => window.location.href = '/short-urls');
+
 loadDashboard();
 fetchClients();
 fetchUrls();
-
 </script>
-
-
 
 </body>
 </html>

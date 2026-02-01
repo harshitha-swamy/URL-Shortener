@@ -165,7 +165,7 @@ public function superadmin_cannot_see_any_urls()
         ]);
 
         // Simulate public route redirect
-        $response = $this->get('/s/' . $shortUrl->short_code);
+        $response = $this->get('/short/' . $shortUrl->short_code);
 
         $response->assertRedirect('https://example.com');
     }

@@ -4,6 +4,9 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\InvitationController;
 use App\Http\Controllers\Api\ShortUrlController;
 use App\Http\Controllers\Api\InvitedRegistrationController;
+use App\Models\Company;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Api\ClientController;
 
 // Auth
 Route::post('/login', [AuthController::class, 'login']);
@@ -46,17 +49,7 @@ Route::middleware('auth:sanctum')->post(
 
 Route::post('/register-invited', [InvitedRegistrationController::class, 'register']);
 
-Route::middleware('auth:sanctum')->get('/clients', function () {
-    return \App\Models\Company::withCount('users')
-        ->get()
-        ->map(fn ($c) => [
-            'name' => $c->name,
-            'email' => '-', // optional
-            'users_count' => $c->users_count,
-            'total_urls' => 0,
-            'total_hits' => 0,
-        ]);
-});
+Route::middleware('auth:sanctum')->get('/clients', [ClientController::class, 'index']);
 
 
 

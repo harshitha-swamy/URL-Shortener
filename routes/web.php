@@ -11,7 +11,7 @@ Route::view('/login', 'auth.login');
 Route::view('/dashboard', 'dashboard');
 Route::view('/invite', 'invite');
 
-Route::get('/s/{code}', function ($code) {
+Route::get('/short/{code}', function ($code) {
     $short = \App\Models\ShortUrl::where('short_code', $code)->firstOrFail();
     $short->increment('clicks');
     return redirect($short->original_url);
