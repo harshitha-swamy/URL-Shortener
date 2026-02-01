@@ -102,14 +102,15 @@ php artisan serve
 - Policies and middleware tested through real HTTP requests
 - Cross-role and cross-company security rules explicitly covered
 
-   PASS  Tests\Feature\ShortUrlTest
-  ✓ admin can create short url                                                                        0.52s  
-  ✓ member can create short url                                                                       0.02s  
-  ✓ superadmin cannot create short url                                                                0.02s  
-  ✓ admin can only see company urls                                                                   0.02s  
-  ✓ member can only see own urls                                                                      0.02s  
-  ✓ superadmin cannot see any urls                                                                    0.02s  
-  ✓ short url redirects to original url                                                               0.03s  
+## ✅ Test Results (Authorization & Access Control)
+
+✅ Admin can create short URLs  
+✅ Member can create short URLs  
+✅ SuperAdmin cannot create short URLs  
+✅ Admin can only see company URLs  
+✅ Member can only see own URLs  
+✅ SuperAdmin cannot see any URLs  
+✅ Short URL redirects to original URL  
 
 
 
