@@ -1,7 +1,7 @@
 ## URL Shortener
 A **role-based**, multi-tenant URL shortener with very strict authorization rules, built with **Laravel**.
 
-Focus: strong access control • company data isolation • private short links (no public resolution)
+Focus: strong access control • company data isolation 
 
 <p align="center">
   <img src="https://dummyimage.com/1200x400/1e293b/ffffff.png&text=Secure+URL+Shortener+—+Laravel" alt="Project Banner" width="90%">
@@ -11,58 +11,51 @@ Focus: strong access control • company data isolation • private short links 
 
 ## 📌 Project Overview
 
-- **Project Name**    : Secure URL Shortener System  
+- **Project Name**    : URL Shortener System  
 - **Author**          : Harshita Swamy  
 - **Role**            : Full Stack Developer  
 - **Framework**       : Laravel 10 / 11 / 12  
 - **PHP Version**     : ≥ 8.1  
-- **Database**        : SQLite (recommended for local dev) / MySQL  
-- **Authentication**  : Laravel built-in Auth  
+- **Database**        : MySQL  
+- **Authentication**  : Laravel Sanctum (token-based) 
 - **Testing**         : PHPUnit (authorization rules coverage)  
-- **License**         : MIT  
+ 
 
 ---
 
 ## 🧠 Core Business & Security Requirements Implemented
 
 - Multi-company structure with isolated visibility  
-- Five user roles with deliberately restricted permissions  
-- **No role** is allowed to create short URLs (SuperAdmin, Admin, Member blocked)  
-- Short URLs are **private** — no public/guest redirection  
-- Strict prevention of cross-company and cross-user URL leaking  
+- Three user roles with deliberately restricted permissions  
+- **Admin, Member** is allowed to create short URLs (SuperAdmin blocked)    
 
 ---
 
 ## 👥 Roles & Permissions Matrix
 
-| Role       | Can create short URL? | URL list visibility rule                                      | Invitation restrictions                              |
-|------------|------------------------|----------------------------------------------------------------|------------------------------------------------------|
-| SuperAdmin | ❌ No                  | ❌ Cannot see full list across all companies                   | Cannot invite Admin to a new company                 |
-| Admin      | ❌ No                  | ❌ Only URLs **not** created in own company                    | Cannot invite Admin or Member in same company        |
-| Member     | ❌ No                  | ❌ Only URLs **not** created by themselves                     | —                                                    |
-| Sales      | ❌ No                  | —                                                              | —                                                    |
-| Manager    | ❌ No                  | —                                                              | —                                                    |
+| Role        | Can create short URL? | URL visibility                                   | Invitation permissions                          |
+|-------------|----------------------|--------------------------------------------------|------------------------------------------------|
+| SuperAdmin  | ❌ No                | ❌ Cannot view any short URLs                    | ✅ Can invite Admin to create NEW company      |
+| Admin       | ✅ Yes               | ✅ URLs created within own company               | ✅ Can invite Member to same company           |
+| Member      | ✅ Yes               | ✅ Only URLs created by themselves               | ❌ Cannot invite anyone                       |
 
 ---
 
 ## 🔐 Key Security & Authorization Features
 
 ### URL Creation
-Disabled for **all** roles listed in the assignment
+- Allowed only for **Admin** and **Member**
+- Explicitly forbidden for **SuperAdmin**
 
 ### URL Listing Visibility
-- SuperAdmin → blocked from global/company-crossing view  
-- Admin     → sees **only URLs from other companies**  
-- Member    → sees **only URLs created by others**
-
-### Short URL Resolution
-- **Not publicly accessible**  
-- Requires proper authentication + authorization  
-- Unauthorized requests → 403 Forbidden or 404 Not Found
+- SuperAdmin → blocked from viewing any URLs
+- Admin → views URLs belonging to their company
+- Member → views only URLs they created
 
 ### Invitation Rules
-- SuperAdmin **cannot** invite Admin into a new company  
-- Admin **cannot** invite another Admin or Member into own company
+- SuperAdmin → can create a new company + invite Admin
+- Admin → can invite Members into own company
+- Member → no invitation permissions
 
 ---
 
@@ -72,8 +65,7 @@ Disabled for **all** roles listed in the assignment
 
 - PHP ≥ 8.1  
 - Composer  
-- Node.js + npm (for frontend assets)  
-- SQLite (easiest for local testing) or MySQL
+- MySQL
 
 ### Step-by-step installation
 
@@ -84,14 +76,13 @@ cd URL-Shortener
 
 # 2. Install dependencies
 composer install
-npm install && npm run dev     # or npm run build for production
 
 # 3. Set up environment file
 cp .env.example .env
-php artisan key:generate
 
 # 4. Run migrations + seed SuperAdmin (raw SQL)
-php artisan migrate --seed
+php artisan migrate 
+php artisan db:seed
 
 # 5. Start local development server
 php artisan serve

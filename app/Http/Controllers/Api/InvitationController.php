@@ -22,9 +22,7 @@ class InvitationController extends Controller
             'company_name' => 'required_if:role,admin',
         ]);
 
-        // $this->authorize('create', [Invitation::class, $request->role]);
-
-        $this->authorize('create', Invitation::class, $request->role);
+        $this->authorize('create', [Invitation::class, $request->role]);
 
         DB::transaction(function () use ($request) {
 
