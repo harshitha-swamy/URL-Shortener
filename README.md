@@ -112,7 +112,15 @@ php artisan serve
 ✅ SuperAdmin cannot see any URLs  
 ✅ Short URL redirects to original URL  
 
+---
 
+## 📸 Demo Video
+
+<p align="center">
+  <video src="https://github.com/harshitha-swamy/URL-Shortener/blob/main/public/images/work_flow.mp4" alt="Login Page" width="100%">
+</p>
+
+---
 
 ## 📸 Screenshots
 
