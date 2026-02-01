@@ -107,7 +107,7 @@ php artisan serve
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="https://placebear.com/800/450" alt="Login Page" width="48%">
+  <img src="https://github.com/harshitha-swamy/URL-Shortener/blob/main/public/images/login_page.png" alt="Login Page" width="48%">
   <img src="https://placebear.com/800/450" alt="Dashboard – Admin View" width="48%">
 </p>
 
