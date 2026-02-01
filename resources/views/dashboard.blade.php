@@ -12,7 +12,7 @@
         } */
 
         body {
-            background: linear-gradient(69deg, #87a2bd, #82bf90);
+            background: #f7f7f7;
             min-height: 100vh;
         }
 
@@ -125,7 +125,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg border shadow-lg" style="background-color: #8daad5;" data-bs-theme="light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
