@@ -95,6 +95,24 @@ php artisan serve
 
 ---
 
+## 🧪 Testing Methodology
+
+- Automated Feature Testing using PHPUnit
+- Focus on authorization and access-control validation
+- Policies and middleware tested through real HTTP requests
+- Cross-role and cross-company security rules explicitly covered
+
+   PASS  Tests\Feature\ShortUrlTest
+  ✓ admin can create short url                                                                        0.52s  
+  ✓ member can create short url                                                                       0.02s  
+  ✓ superadmin cannot create short url                                                                0.02s  
+  ✓ admin can only see company urls                                                                   0.02s  
+  ✓ member can only see own urls                                                                      0.02s  
+  ✓ superadmin cannot see any urls                                                                    0.02s  
+  ✓ short url redirects to original url                                                               0.03s  
+
+
+
 ## 📸 Screenshots
 
 <p align="center">
