@@ -91,17 +91,47 @@
                 <input type="email" class="form-control" id="admin_email" required>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 position-relative">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" required>
+
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    required
+                >
+
+                <span
+                    id="togglePassword"
+                    style="position:absolute; right:12px; top:38px; cursor:pointer;"
+                >
+                    👁️
+                </span>
             </div>
+
 
             <button type="submit" class="btn btn-primary w-100">Invite Admin</button>
         </form>
     </div>
 </div>
 
+
+
 <script>
+
+    document.getElementById('togglePassword').addEventListener('click', function () {
+    const input = document.getElementById('password');
+
+    if (input.type === 'password') {
+        input.type = 'text';
+        this.textContent = '👁️';
+    } else {
+        input.type = 'password';
+        this.textContent = '🙈';
+    }
+});
+
+
 const token = localStorage.getItem('api_token');
 if (!token) window.location.href = '/login';
 
