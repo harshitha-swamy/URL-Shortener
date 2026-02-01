@@ -17,15 +17,6 @@ Route::get('/short/{code}', function ($code) {
     return redirect($short->original_url);
 });
 
-
-
-// Route::get('/login', function () {
-//     return view('login');
-// })->name('login');
-
-
-
-
 Route::get('/short-urls', function() {
     return view('url_shortener');
 });
