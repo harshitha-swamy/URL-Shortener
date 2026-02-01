@@ -117,7 +117,10 @@ php artisan serve
 ## 📸 Demo Video
 
 <p align="center">
-  <video src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" alt="Login Page" width="100%">
+  <video width="320" height="240" autoplay muted>
+    <source src="https://drive.google.com/file/d/1zhz2BfCpGZd8NiFwcvLYXMbHsNJ-VSh4/view" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
 </p>
 
 ---
