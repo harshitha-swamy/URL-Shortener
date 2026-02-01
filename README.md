@@ -117,10 +117,7 @@ php artisan serve
 ## 📸 Demo Video
 
 <p align="center">
-  <video width="320" height="240" autoplay muted>
-    <source src="https://drive.google.com/file/d/1zhz2BfCpGZd8NiFwcvLYXMbHsNJ-VSh4/view" type="video/mp4">
-  Your browser does not support the video tag.
-  </video>
+  [![Watch the demo] (https://github.com/harshitha-swamy/URL-Shortener/blob/main/public/images/work_flow.mp4)]
 </p>
 
 ---
