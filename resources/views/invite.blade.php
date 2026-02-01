@@ -73,7 +73,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="admin_name" class="form-label">Admin Name</label>
+                <label for="admin_name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="admin_name" required>
             </div>
 

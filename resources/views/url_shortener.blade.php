@@ -68,11 +68,19 @@
 
 <script>
     // Logout
-    document.getElementById('logoutBtn').addEventListener('click', () => {
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+        await fetch('/logout', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': document
+                    .querySelector('meta[name="csrf-token"]')
+                    .getAttribute('content')
+            }
+        });
+
         localStorage.removeItem('api_token');
         window.location.href = '/login';
     });
-
     document.getElementById('shortenBtn').addEventListener('click', () => {
         const url = document.getElementById('urlInput').value.trim();
         const result = document.getElementById('result');

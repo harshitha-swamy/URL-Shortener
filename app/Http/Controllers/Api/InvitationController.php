@@ -14,8 +14,7 @@ class InvitationController extends Controller
 {
     
     public function store(Request $request)
-    {
-        
+    {        
         $request->validate([
             'email'        => 'required|email|unique:users,email',
             'role'         => 'required|in:admin,member',
@@ -45,16 +44,16 @@ class InvitationController extends Controller
                 'token'      => \Str::random(32),
             ]);
 
-            // ✅ Create user immediately with admin-defined password
+            
             $role=$request->role;
-            \Log::info("Role is: ".$role);
+            
             User::create([
                 'name'       => $request->name, // can be updated later
                 'email'      => $request->email,
                 'role'       => $role,
                 'company_id' => $company->id,
-                'password'   => Hash::make('admin@123'),
-                'plain_password' => 'admin@123',
+                'password'   => Hash::make($request->password),
+                'plain_password' => $request->password,
             ]);
         });
 
