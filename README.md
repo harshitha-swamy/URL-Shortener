@@ -117,7 +117,7 @@ php artisan serve
 ## 📸 Demo Video
 
 <p align="center">
-  <video src="https://github.com/harshitha-swamy/URL-Shortener/blob/main/public/images/work_flow.mp4" alt="Login Page" width="100%">
+  <video src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" alt="Login Page" width="100%">
 </p>
 
 ---
