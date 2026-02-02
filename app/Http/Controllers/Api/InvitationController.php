@@ -18,7 +18,7 @@ class InvitationController extends Controller
         $request->validate([
             'email'        => 'required|email|unique:users,email',
             'role'         => 'required|in:admin,member',
-            'company_name' => 'required_if:role,admin',
+            'company_name' => 'required',
         ]);
 
         $this->authorize('create', [Invitation::class, $request->role]);
