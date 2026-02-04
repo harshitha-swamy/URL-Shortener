@@ -41,9 +41,9 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <a class="navbar-brand" href="#">Shortner URL</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
+        </li> -->
       </ul>
       <form class="d-flex" role="search">
         <button id="logoutBtn" class="btn btn-danger">Logout &rarr;</button>
