@@ -17,6 +17,7 @@ class ShortUrlRedirectController extends Controller
         if (!$shortUrl) {
             return response()->json(['message' => 'URL not found'], 404);
         }
+        $shortUrl->increment('clicks');
 
         return redirect()->away($shortUrl->original_url);
     }

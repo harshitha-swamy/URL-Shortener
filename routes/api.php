@@ -26,13 +26,12 @@ Route::middleware('auth:sanctum')->get('/me', function (Request $request) {
     return response()->json($request->user());
 });
 
-Route::middleware('auth:sanctum')->get('/urls', [ShortUrlController::class, 'index']);
 
 
 // routes/api.php
-Route::middleware('auth:api')->get('/me', function () {
-    return auth()->user();
-});
+// Route::middleware('auth:api')->get('/me', function () {
+//     return auth()->user();
+// });
 // Route::post('/short-urls', [ShortUrlController::class, 'store']);
 
 Route::middleware('auth:sanctum')->post('/short-urls', [ShortUrlController::class, 'store']);
