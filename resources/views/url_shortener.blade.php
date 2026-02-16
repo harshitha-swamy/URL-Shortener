@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sembark URL Shortener</title>
+    <title>URL Shortener</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -56,7 +56,7 @@
 
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card col-md-5">
-        <h2 class="card-title mb-4">Sembark URL Shortener</h2>
+        <h2 class="card-title mb-4">URL Shortener</h2>
 
         <div class="mb-3">
             <input type="text" class="form-control" id="urlInput" placeholder="Enter long URL">

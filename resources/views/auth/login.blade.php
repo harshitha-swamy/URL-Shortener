@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sembark URL Shortener - Login</title>
+    <title>URL Shortener - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <style>
         body {
@@ -46,7 +46,7 @@
 <body>
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card col-md-4">
-            <h2 class="card-title mb-4">Sembark URL Shortener</h2>
+            <h2 class="card-title mb-4">URL Shortener</h2>
 
             <!-- Error Message -->
             <div id="error" class="alert alert-danger" role="alert"></div>
